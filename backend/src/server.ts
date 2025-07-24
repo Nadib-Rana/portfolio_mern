@@ -2,11 +2,11 @@ import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import projectRoutes from './routes/projectRoutes';
-import skillRoutes from './routes/skillRoutes';
+// import projectRoutes from './routes/projectRoutes';
+// import skillRoutes from './routes/skillRoutes';
 import aboutRoutes from './routes/aboutRoutes';
-import contactRoutes from './routes/contactRoutes';
-import authRoutes from './routes/authRoutes';
+// import contactRoutes from './routes/contactRoutes';
+// import authRoutes from './routes/authRoutes';
 import { authenticateToken } from './middleware/auth';
 
 dotenv.config();
@@ -24,15 +24,15 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/mern-portfo
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/projects', projectRoutes);
-app.use('/api/skills', skillRoutes);
+// app.use('/api/projects', projectRoutes);
+// app.use('/api/skills', skillRoutes);
 app.use('/api/about', aboutRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/auth', authRoutes);
+// app.use('/api/contact', contactRoutes);
+// app.use('/api/auth', authRoutes);
 
 // Protected Admin Routes
-app.use('/api/admin/projects', authenticateToken, projectRoutes);
-app.use('/api/admin/skills', authenticateToken, skillRoutes);
+// app.use('/api/admin/projects', authenticateToken, projectRoutes);
+// app.use('/api/admin/skills', authenticateToken, skillRoutes);
 app.use('/api/admin/about', authenticateToken, aboutRoutes);
 
 app.get('/', (req: Request, res: Response) => {
