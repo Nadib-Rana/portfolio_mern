@@ -3,6 +3,9 @@ import Testimonial from '../models/testimonial.model';
 
 //  GET all testimonials
 export const getTestimonials = async (req: Request, res: Response) => {
+
+    console.log("Hit for get testimonials");
+
   try {
     const testimonials = await Testimonial.find().sort({ createdAt: -1 });
     res.status(200).json(testimonials);
@@ -13,6 +16,8 @@ export const getTestimonials = async (req: Request, res: Response) => {
 
 //  POST new testimonial
 export const createTestimonial = async (req: Request, res: Response) => {
+    console.log("Hit for create testimonials");
+
   try {
     const newTestimonial = new Testimonial(req.body);
     const saved = await newTestimonial.save();
@@ -24,6 +29,9 @@ export const createTestimonial = async (req: Request, res: Response) => {
 
 //  DELETE testimonial by ID
 export const deleteTestimonial = async (req: Request, res: Response) => {
+
+    console.log("Hit for Delete testimonials");
+
   try {
     const { id } = req.params;
     const deleted = await Testimonial.findByIdAndDelete(id);
@@ -36,6 +44,10 @@ export const deleteTestimonial = async (req: Request, res: Response) => {
 
 //  UPDATE testimonial by ID
 export const updateTestimonial = async (req: Request, res: Response) => {
+    
+    console.log("Hit for update testimonials");
+
+
   try {
     const { id } = req.params;
     const updates = req.body;
