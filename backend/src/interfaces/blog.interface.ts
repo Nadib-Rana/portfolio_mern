@@ -1,9 +1,8 @@
 import { Document } from 'mongoose';
 
-export interface IProject extends Document {
+export interface IBlog extends Document {
   title: string;
   description: string;
   image: string;
-  link: string;
+  publishedDate: Date;
 }
-

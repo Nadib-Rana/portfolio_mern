@@ -1,10 +1,11 @@
 import skillModel from "../models/skill.model";
 import { Request, Response } from "express";
 
+
 //  Get All Skills
 export const getSkill = async (req: Request, res: Response) => {
   try {
-    const skills = await skillModel.find();
+    const skills =await skillModel.find();
     res.status(200).json(skills);
   } catch (error) {
     res.status(400).json({ error: "Failed to fetch skills" });
@@ -38,27 +39,31 @@ export const searchSkill = async (req: Request, res: Response) => {
   }
 };
 
-//  Create New Skill (with Duplicate Check)
+//  Create New Skill.
 export const createSkill = async (req: Request, res: Response) => {
+  const { category, items } = req.body;
+
+  if (!category || !Array.isArray(items)) {
+    return res.status(400).json({ error: "Invalid skill data format." });
+  }
+
   try {
-    const existingSkill = await skillModel.findOne({ name: req.body.name });
-    if (existingSkill) {
-      return res.status(409).json({ error: "Skill already exists" });
-    }
-    const newSkill = await skillModel.create(req.body);
+    const newSkill = await skillModel.create({ category, items });
+    console.log("Skill created:", newSkill); // Swap with proper logger in production
     res.status(201).json(newSkill);
-  } catch (error) {
-    res.status(400).json({ error: "Failed to create skill" });
+  } catch (error: any) {
+    console.error("Skill creation error:", error.message);
+    res.status(500).json({ error: "Something went wrong while creating skill." });
   }
 };
-
-// ✏️ Update Skill
+//  Update Skill
 export const updateSkill = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const updatedSkill = await skillModel.findByIdAndUpdate(id, req.body, {
       new: true,
     });
+    console.log(updatedSkill);
     if (!updatedSkill) {
       return res.status(404).json({ error: "Skill not found" });
     }
@@ -68,7 +73,7 @@ export const updateSkill = async (req: Request, res: Response) => {
   }
 };
 
-// 🗑️ Delete Skill
+//  Delete Skill
 export const deleteSkill = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -80,15 +85,4 @@ export const deleteSkill = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(400).json({ error: "Failed to delete skill" });
   }
-};
-
-// 🧯 Central Error Middleware (optional)
-export const errorMiddleware = (
-  err: Error,
-  req: Request,
-  res: Response,
-  next: Function
-) => {
-  console.error(err.stack);
-  res.status(500).json({ error: "Something went wrong!" });
 };

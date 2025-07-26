@@ -1,49 +1,27 @@
-import express, { Request, Response } from 'express';
-import Project, { IProject } from '../models/Project';
+import { Router } from "express";
+import {
+  getProjects,
+  getProjectById,
+  searchProject,
+  createProject,
+  updateProject,
+  deleteProject,
+} from "../controllers/project.controller";
 
-const router = express.Router();
+const projectRouter = Router();
 
-// Get all projects
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const projects = await Project.find();
-    res.json(projects);
-  } catch (err) {
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+//  GET all projects & CREATE new
+projectRouter.route("/")
+  .get(getProjects)
+  .post(createProject);
 
-// Create a project (Admin)
-router.post('/', async (req: Request, res: Response) => {
-  try {
-    const project = new Project(req.body);
-    await project.save();
-    res.status(201).json(project);
-  } catch (err) {
-    res.status(400).json({ message: 'Error creating project' });
-  }
-});
+//  SEARCH by title (e.g., /api/projects/search?keyword=MERN)
+projectRouter.route("/search").get(searchProject);
 
-// Update a project (Admin)
-router.put('/:id', async (req: Request, res: Response) => {
-  try {
-    const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!project) return res.status(404).json({ message: 'Project not found' });
-    res.json(project);
-  } catch (err) {
-    res.status(400).json({ message: 'Error updating project' });
-  }
-});
+//  GET, UPDATE, DELETE project by ID
+projectRouter.route("/:id")
+  .get(getProjectById)
+  .put(updateProject)
+  .delete(deleteProject);
 
-// Delete a project (Admin)
-router.delete('/:id', async (req: Request, res: Response) => {
-  try {
-    const project = await Project.findByIdAndDelete(req.params.id);
-    if (!project) return res.status(404).json({ message: 'Project not found' });
-    res.json({ message: 'Project deleted' });
-  } catch (err) {
-    res.status(400).json({ message: 'Error deleting project' });
-  }
-});
-
-export default router;
+export default projectRouter;
