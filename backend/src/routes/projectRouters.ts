@@ -1,14 +1,10 @@
 import { Router } from "express";
 import {
-  getProjects,
-  getProjectById,
-  searchProject,
-  createProject,
-  updateProject,
-  deleteProject,
+  getProjects,getProjectById,searchProject,createProject,updateProject,deleteProject,
 } from "../controllers/project.controller";
-
+  // /api/project
 const projectRouter = Router();
+
 
 //  GET all projects & CREATE new
 projectRouter.route("/")
