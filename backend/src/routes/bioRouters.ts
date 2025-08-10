@@ -1,27 +1,16 @@
 import { Router } from "express";
-import {
-  createBio,
-  getAllBios,
-  getBioById,
-  updateBio,
-  deleteBio,
-} from "../controllers/bio.controller";
+import {createBio,getAllBios,getBioById,updateBio,deleteBio} from "../controllers/bio.controller";
 
-const router = Router();
+// /api/bio
+const bioRouter = Router();
 
-// 🔧 Create a new bio
-router.post("/", createBio);
+bioRouter.route ("/")
+          .post( createBio)
+          .get( getAllBios);
 
-// 📄 Get all bios
-router.get("/", getAllBios);
+bioRouter.route ("/id")
+          .post( getBioById)
+          .put( updateBio)
+          .delete( deleteBio);
 
-// 🔍 Get a specific bio by ID
-router.get("/:id", getBioById);
-
-// ✏️ Update bio by ID
-router.put("/:id", updateBio);
-
-// 🗑️ Delete bio by ID
-router.delete("/:id", deleteBio);
-
-export default router;
+export default bioRouter;

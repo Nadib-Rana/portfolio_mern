@@ -1,4 +1,5 @@
 import express, {Request, Response} from 'express';
+import cors from 'cors';
 
 import skillRouter from './routes/skillRoutes';
 import projectRouter from './routes/projectRouters';
@@ -14,6 +15,10 @@ import eduRoutes from "./routes/eduRouters";
 
 const app = express();
 
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/skills", skillRouter);

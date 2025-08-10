@@ -1,14 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
-import { IAbout } from '../interfaces/about.interface';
+import { IAbout } from '../interfaces/about';
 
 const AboutSchema: Schema = new Schema({
-  section: { type: String, required: true },
-  content: [
-    {
-      detail: { type: String, required: true },
-      year: { type: Number }
-    }
-  ]
+
+  description : String
+ 
 });
 
 export default mongoose.model<IAbout>('About', AboutSchema);

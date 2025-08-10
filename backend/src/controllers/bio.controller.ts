@@ -16,7 +16,13 @@ export const createBio = async (req: Request, res: Response) => {
 export const getAllBios = async (_req: Request, res: Response) => {
   try {
     const bios = await BioModel.find();
-    res.status(200).json(bios);
+    // Return only the first bio object if it exists
+    if (bios.length > 0) {
+      res.status(200).json(bios[0]);
+    } else {
+      res.status(200).json(null);
+    }
+    console.log(bios);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
