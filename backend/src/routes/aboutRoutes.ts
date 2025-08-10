@@ -1,4 +1,4 @@
-import { Express, Router } from "express";
+import {  Router } from "express";
 import { createAbout ,getAbout  } from "../controllers/about.controller";
 
 const aboutRoutes = Router();

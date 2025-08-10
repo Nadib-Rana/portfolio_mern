@@ -5,8 +5,8 @@ const testimonialSchema: Schema = new Schema(
   {
     name: { type: String, required: true },
     message: { type: String, required: true },
-    avatar: { type: String }, // Optional: URL to the avatar image
-    designation: { type: String } // Optional: e.g., "Software Engineer"
+    avatar: { type: String }, 
+    designation: { type: String } 
   },
   {
     timestamps: true // Adds createdAt and updatedAt automatically

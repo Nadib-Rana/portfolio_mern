@@ -9,6 +9,8 @@ import contractRoutes from "./routes/contract.routes";
 import bioRoutes from "./routes/bioRouters";
 import aiChatRoutes from "./routes/aichat.routers";
 import eduRoutes from "./routes/eduRouters";
+import experticeRouter from './routes/expertice.routes';
+import accevmentRouter from './routes/accevmentRouters';
 
 
 
@@ -29,6 +31,9 @@ app.use("/api/testimonial",testimonialRoute);
 app.use("/api/bio", bioRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
 app.use("/api/edu", eduRoutes);
+app.use("/api/expertice",experticeRouter );
+app.use("/api/accevment", accevmentRouter)
+
 
 
 export default app;
