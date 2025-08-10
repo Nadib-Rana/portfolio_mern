@@ -1,7 +1,20 @@
+export interface Bio{
+   name: string;
+  description: string;
+  title: string;
+  socialMediaIcon: string;
+  socialMediaLink: string;
+  profilePic: string;
+}
+
+
+
 export interface NavLink {
   name: string;
   href: string;
 }
+
+
 
 export interface SocialLink {
   name: string;
