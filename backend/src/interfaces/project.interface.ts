@@ -5,5 +5,6 @@ export interface IProject extends Document {
   description: string;
   image: string;
   link: string;
+  tools: string[];
 }
 

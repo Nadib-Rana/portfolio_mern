@@ -1,5 +1,6 @@
-import AchievementComponent from "./components/achievementComponent";
-import BioComponent from "./components/BioComponent";
+import About from "./components/About";
+import AchievementComponent from "./components/AchievementComponent";
+import Bio from "./components/Biocomponent";
 import Contact from "./components/Contact";
 
 import EducationComponent from "./components/EducationComponent";
@@ -12,14 +13,14 @@ import TestimonialComponent from "./components/testimonial.component";
 const App = () => {
   return (
     <div>
-       <BioComponent />
-       <ProjectsComponent />
-       <ExpertiseComponent />
-        <EducationComponent />
+         <Bio />
+         <About />
+         <EducationComponent />
+         <ExpertiseComponent />
+         <ProjectsComponent />
          <AchievementComponent />
          <TestimonialComponent />
          <Contact />
-         
     </div>
   );
 };

@@ -31,7 +31,7 @@ app.use("/api/testimonial",testimonialRoute);
 app.use("/api/bio", bioRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
 app.use("/api/edu", eduRoutes);
-app.use("/api/expertice",experticeRouter );
+app.use("/api/expertise",experticeRouter );
 app.use("/api/accevment", accevmentRouter)
 
 
