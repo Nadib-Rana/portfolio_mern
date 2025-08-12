@@ -32,7 +32,7 @@ const EducationComponent: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
+    <section id="education" className="py-16 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-14">

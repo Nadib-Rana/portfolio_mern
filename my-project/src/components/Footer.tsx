@@ -1,51 +1,123 @@
-import { socialLinks, contactInfo } from '../types';
+import React from "react";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/nadibrana",
+    icon: <FaGithub />,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/nadibrana",
+    icon: <FaLinkedin />,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/nadibrana",
+    icon: <FaTwitter />,
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/nadibrana",
+    icon: <FaFacebook />,
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/nadibrana",
+    icon: <FaInstagram />,
+  },
+];
+
+const contactInfo = [
+  { label: "Email", value: "nadib@example.com", href: "mailto:nadib@example.com" },
+  { label: "Phone", value: "+880 1234 567 890", href: "tel:+8801234567890" },
+  { label: "Location", value: "Dhaka, Bangladesh" },
+];
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#222] text-white py-8 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+    <footer className="bg-[#222] text-white py-10 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+        {/* Brand Info */}
         <div className="max-w-md">
-          <h3 className="text-2xl font-bold text-[#00d9ff] mb-4">Nadib Rana</h3>
-          <p className="text-sm">Building innovative and user-friendly web solutions to meet modern needs.</p>
+          <h3 className="text-3xl font-bold text-[#00d9ff] mb-3">Nadib Rana</h3>
+          <p className="text-gray-300 leading-relaxed">
+            Crafting innovative, clean, and user-friendly web solutions to help
+            your business grow and shine in the digital age.
+          </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-8">
-          <div>
-            <h4 className="text-lg font-semibold text-[#00d9ff] mb-4">Quick Links</h4>
-            <ul className="list-none">
-              {['Home', 'About', 'Projects', 'Contact'].map((link, index) => (
-                <li key={index} className="mb-2">
-                  <a href={`#${link.toLowerCase()}`} className="text-gray-300 hover:text-[#00d9ff] text-sm">{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold text-[#00d9ff] mb-4">Follow Me</h4>
-            <div className="flex gap-4">
-              {socialLinks.slice(0, 5).map((link, index) => (
-                <a key={index} href={link.href} target="_blank" rel="noopener noreferrer">
-                  <img src={link.icon} alt={link.name} className="w-8 h-8 rounded-full hover:scale-110 transition-transform" />
+
+        {/* Quick Links */}
+        <div>
+          <h4 className="text-xl font-semibold text-[#00d9ff] mb-4">Quick Links</h4>
+          <ul className="space-y-2">
+            {["Home", "About", "Projects", "Contact"].map((link) => (
+              <li key={link}>
+                <a
+                  href={`#${link.toLowerCase()}`}
+                  className="text-gray-400 hover:text-[#00d9ff] transition-colors"
+                >
+                  {link}
                 </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold text-[#00d9ff] mb-4">Contact</h4>
-            {contactInfo.map((info, index) => (
-              <p key={index} className="text-sm mb-2">
-                <strong>{info.label}:</strong>{' '}
-                {info.href ? (
-                  <a href={info.href} className="text-[#00d9ff] hover:underline">{info.value}</a>
-                ) : (
-                  info.value
-                )}
-              </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Social Media */}
+        <div>
+          <h4 className="text-xl font-semibold text-[#00d9ff] mb-4">Follow Me</h4>
+          <div className="flex space-x-5 text-2xl text-gray-400">
+            {socialLinks.map(({ href, icon, name }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="hover:text-[#00d9ff] transition-colors transform hover:scale-110"
+              >
+                {icon}
+              </a>
             ))}
           </div>
         </div>
+
+        {/* Contact Info */}
+        <div>
+          <h4 className="text-xl font-semibold text-[#00d9ff] mb-4">Contact</h4>
+          <ul className="space-y-2 text-gray-400">
+            {contactInfo.map(({ label, value, href }) => (
+              <li key={label}>
+                <strong>{label}:</strong>{" "}
+                {href ? (
+                  <a
+                    href={href}
+                    className="text-[#00d9ff] hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span>{value}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="border-t border-gray-600 mt-6 pt-4 text-center">
-        <p className="text-sm text-gray-400">© 2024 Nadib Rana | All rights reserved</p>
+
+      {/* Bottom bar */}
+      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm select-none">
+        &copy; {new Date().getFullYear()} Nadib Rana. All rights reserved.
       </div>
     </footer>
   );

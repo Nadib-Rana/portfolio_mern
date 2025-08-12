@@ -31,7 +31,7 @@ const ProjectsComponent: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white font-sans">
+    <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16">

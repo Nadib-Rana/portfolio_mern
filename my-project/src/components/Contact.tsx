@@ -38,7 +38,7 @@ const ContractForm: React.FC = () => {
 
   return (
     <section className="w-full min-h-screen py-20 bg-gray-900">
-      <div className="max-w-3xl mx-auto px-6">
+      <div id="contact" className="max-w-3xl mx-auto px-6">
         {/* Title */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-white drop-shadow-md">Contract Form</h2>
@@ -86,7 +86,7 @@ const ContractForm: React.FC = () => {
             ></textarea>
             <button
               type="submit"
-              className="w-full py-3 text-lg font-semibold text-gray-900 bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 hover:scale-105 transition"
+              className="w-full py-3 text-lg font-semibold bg-indigo-400 rounded-lg shadow-lg hover:bg-gray-300 text-white-6000 hover:scale-105 transition"
             >
               Send Message
             </button>

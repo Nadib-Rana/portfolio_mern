@@ -68,7 +68,7 @@ const TestimonialComponent: React.FC = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black py-20 px-4">
+    <div id="testimonials" className="bg-gradient-to-br from-gray-900 to-black py-20 px-4">
       <section className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-400 mb-10">
           Testimonials

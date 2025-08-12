@@ -31,7 +31,7 @@ const ExpertiseComponent: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
+    <section id="expertise" className="py-16 bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-14">
