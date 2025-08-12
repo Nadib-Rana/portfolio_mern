@@ -5,6 +5,7 @@ import Contact from "./components/Contact";
 
 import EducationComponent from "./components/EducationComponent";
 import ExpertiseComponent from "./components/expertiseComponent";
+import Navbar from "./components/Navbar";
 import ProjectsComponent from "./components/projectsComponent";
 import TestimonialComponent from "./components/testimonial.component";
 
@@ -13,6 +14,8 @@ import TestimonialComponent from "./components/testimonial.component";
 const App = () => {
   return (
     <div>
+         <Navbar />
+         <br />
          <Bio />
          <About />
          <EducationComponent />
