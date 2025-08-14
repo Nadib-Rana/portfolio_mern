@@ -218,7 +218,7 @@ const AiChatBot: React.FC = () => {
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[80%] px-4 py-2 rounded-lg ${
+                className={`max-w-[98%] px-4 py-2 rounded-lg ${
                   msg.sender === "user"
                     ? "bg-blue-600 text-white self-end text-right"
                     : "bg-gray-800 text-gray-200 self-start text-left"
