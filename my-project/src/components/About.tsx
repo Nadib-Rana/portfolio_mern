@@ -158,7 +158,6 @@ const About: React.FC = () => {
               I'm passionate about creating efficient, maintainable code and delivering exceptional user experiences.
             </p>
           </div>
-
         </motion.div>
       </div>
     </section>

@@ -8,9 +8,12 @@ const ContractForm: React.FC = () => {
     subject: "",
     message: "",
   });
+
   const [status, setStatus] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -18,22 +21,30 @@ const ContractForm: React.FC = () => {
     e.preventDefault();
     setStatus("Sending...");
 
+    // 1️⃣ মেসেজ তোমার ইমেইলে পাঠানো
     emailjs
       .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_jgdxz7p", // তোমার Service ID
+        "template_tvews17", //  Template ID for admin
         formData,
-        "YOUR_PUBLIC_KEY"
+        "qjJlcNGAAKQb-g9YR" //  Public Key
       )
-      .then(
-        () => {
-          setStatus("✅ Message sent successfully!");
-          setFormData({ name: "", email: "", subject: "", message: "" });
-        },
-        () => {
-          setStatus("❌ Failed to send message. Please try again.");
-        }
-      );
+      .then(() => {
+        // 2️⃣ স্বয়ংক্রিয় রিপ্লাই মেসেজ ক্লায়েন্টকে
+        return emailjs.send(
+          "service_jgdxz7p",
+          "template_x7oqj62", // Template ID for client reply
+          formData,
+          "qjJlcNGAAKQb-g9YR"
+        );
+      })
+      .then(() => {
+        setStatus("✅ Message sent successfully and client notified!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch(() => {
+        setStatus("❌ Failed to send message. Please try again.");
+      });
   };
 
   return (
@@ -41,8 +52,12 @@ const ContractForm: React.FC = () => {
       <div id="contact" className="max-w-3xl mx-auto px-6">
         {/* Title */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-white drop-shadow-md">Contract Form</h2>
-          <p className="text-gray-300 mt-2">Fill in the form below to send us your contract request.</p>
+          <h2 className="text-4xl font-bold text-white drop-shadow-md">
+            Contract Form
+          </h2>
+          <p className="text-gray-300 mt-2">
+            Fill in the form below to send us your contract request.
+          </p>
         </div>
 
         {/* Form Card */}
@@ -86,7 +101,7 @@ const ContractForm: React.FC = () => {
             ></textarea>
             <button
               type="submit"
-              className="w-full py-3 text-lg font-semibold bg-indigo-400 rounded-lg shadow-lg hover:bg-gray-300 text-white-6000 hover:scale-105 transition"
+              className="w-full py-3 text-lg font-semibold bg-indigo-400 rounded-lg shadow-lg hover:bg-gray-300 text-white hover:scale-105 transition"
             >
               Send Message
             </button>
