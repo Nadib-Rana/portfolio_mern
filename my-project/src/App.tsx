@@ -1,5 +1,6 @@
 import About from "./components/About";
 import AchievementComponent from "./components/AchievementComponent";
+import AiChatBot from "./components/AiChatBot";
 import Bio from "./components/Biocomponent";
 import Contact from "./components/Contact";
 
@@ -26,6 +27,7 @@ const App = () => {
          <TestimonialComponent />
          <Contact />
          <Footer />
+         <AiChatBot />
     </div>
   );
 };
