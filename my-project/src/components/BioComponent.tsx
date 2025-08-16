@@ -24,7 +24,7 @@ const Bio: React.FC = () => {
   useEffect(() => {
     const fetchBio = async () => {
       try {
-        const res = await axios.get<IBio>("http://localhost:4002/api/bio");
+        const res = await axios.get<IBio>("http://localhost:5000/api/bio");
         setBio(res.data);
       } catch (error) {
         console.error("Error fetching bio:", error);

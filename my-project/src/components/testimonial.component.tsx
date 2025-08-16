@@ -20,7 +20,7 @@ const TestimonialComponent: React.FC = () => {
     const fetchTestimonials = async () => {
       try {
         const res = await axios.get<ITestimonial[]>(
-          "http://localhost:4002/api/testimonial"
+          "http://localhost:5000/api/testimonial"
         );
         setTestimonials(res.data);
       } catch (err) {

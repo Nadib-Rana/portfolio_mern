@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import cors from 'cors';
 
+import authRoutes from './routes/authRoutes';
 import skillRouter from './routes/skillRoutes';
 import projectRouter from './routes/projectRouters';
 import blogRouter from './routes/blogRouters';
@@ -18,11 +19,12 @@ import accevmentRouter from './routes/accevmentRouters';
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5173",
   credentials: true
 }));
 app.use(express.json());
 
+app.use('/api', authRoutes);
 app.use("/api/skills", skillRouter);
 app.use("/api/project",projectRouter);
 app.use("/api/contracts", contractRoutes);

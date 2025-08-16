@@ -18,7 +18,7 @@ const EducationComponent: React.FC = () => {
     const fetchEducation = async () => {
       try {
         const res = await axios.get<IEdu[]>(
-          "http://localhost:4002/api/edu"
+          "http://localhost:5000/api/edu"
         );
         setEducation(res.data);
       } catch (error) {

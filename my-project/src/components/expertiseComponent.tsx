@@ -17,7 +17,7 @@ const ExpertiseComponent: React.FC = () => {
     const fetchExpertise = async () => {
       try {
         const res = await axios.get<IExpertise[]>(
-          "http://localhost:4002/api/expertise"
+          "http://localhost:5000/api/expertise"
         );
         setExpertise(res.data);
       } catch (error) {

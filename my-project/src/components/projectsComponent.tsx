@@ -18,7 +18,7 @@ const ProjectsComponent: React.FC = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get<IProject[]>("http://localhost:4002/api/project");
+        const res = await axios.get<IProject[]>("http://localhost:5000/api/project");
         setProjects(res.data);
       } catch (error) {
         console.error("Error fetching projects:", error);

@@ -16,7 +16,7 @@ const AchievementComponent: React.FC = () => {
     const fetchAccevments = async () => {
       try {
         const res = await axios.get<IAccevment[]>(
-          "http://localhost:4002/api/accevment"
+          "http://localhost:5000/api/accevment"
         );
         setAccevments(res.data);
       } catch (error) {
