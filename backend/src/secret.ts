@@ -6,6 +6,8 @@
 require('dotenv').config();
 
 const serverPort = process.env.SERVER_PORT || 5000;
+
+
 const mongodbUrl = process.env.MONGO_URI;
 
 const jwtActivationKey = process.env.JWT_ACTIVATION_KEY;

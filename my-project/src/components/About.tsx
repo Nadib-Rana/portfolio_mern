@@ -49,7 +49,7 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="bg-gray-900 py-20 px-6 max-w-7xl mx-auto min-h-[500px] scroll-mt-[100px]"
+      className="w-full bg-gray-900 py-20 px-6 max-w-7xl mx-auto min-h-[500px] scroll-mt-[100px]"
     >
       {/* Section Header */}
       <div className="flex items-center justify-center mb-1">

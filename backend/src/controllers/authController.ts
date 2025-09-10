@@ -6,15 +6,26 @@ import { Request, Response } from 'express';
 import { sendVerificationEmail } from '../utils/sendVerificationEmail';
 
 const generateToken = (id: string) =>
-  jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: '7d' });
+  jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: '1d' });
 
 export const signup = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body as { name: string; email: string; password: string };
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: 'All fields are required' });
+    // modify : 08-17-2025
+    //  if (!name || !email || !password) {
+    //   return res.status(400).json({ message: 'All fields are required' });
+    // }
+    if (!name) {
+      return res.status(400).json({ message: 'Name required' });
     }
 
+     if (!email) {
+      return res.status(400).json({ message: 'Email required' });
+    }
+     if (!password) {
+      return res.status(400).json({ message: 'Password required' });
+    }
+    
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ message: 'Email already in use' });
 
@@ -41,8 +52,10 @@ export const verifyEmail = async (req: Request, res: Response) => {
 
     user.isVerified = true;
     user.verificationToken = undefined;
-    await user.save();
-
+    const userinfo = await user.save();
+    
+    console.log(userinfo);
+  
     res.send('Email verified successfully!');
   } catch (error) {
     console.error('Verify Error:', error);
