@@ -1,4 +1,4 @@
-mern-portfolio/
+``` mern-portfolio/
 ├── backend/
 │   ├── src/
 │   │   ├── models/
@@ -20,3 +20,5 @@ mern-portfolio/
 │   ├── package.json
 │   └── tsconfig.json
 └── README.md
+
+```
